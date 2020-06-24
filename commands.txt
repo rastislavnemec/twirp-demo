@@ -1,0 +1,2 @@
+protoc -I proto proto/stock.proto --go_out=stock/generated --twirp_out=stock/generated
+protoc -I proto proto/stock.proto --php_out=shop/generated --twirp_php_out=shop/generated

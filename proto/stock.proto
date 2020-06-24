@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package footshop;
+
+option go_package = "footshop";
+
+service Stock {
+    rpc ReservationCreate(ReservationCreateRequest) returns (ReservationCreateResponse);
+}
+
+message ReservationCreateRequest {
+    string ean = 1;
+    int64 quantity = 2; // minimum is 5
+}
+
+message ReservationCreateResponse {
+    enum Result {
+        RESULT_UNSPECIFIED = 0;
+        RESULT_SUCCESS = 1;
+        RESULT_UNAVAILABLE = 2;
+    }
+    Result result = 1;
+}

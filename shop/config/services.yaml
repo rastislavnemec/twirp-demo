@@ -1,0 +1,20 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    App\:
+        resource: '../src/*'
+        exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+
+    Psr\Http\Message\ServerRequestFactoryInterface:
+        factory: ['Http\Discovery\Psr17FactoryDiscovery','findServerRequestFactory']
+
+    Psr\Http\Message\StreamFactoryInterface:
+        factory: ['Http\Discovery\Psr17FactoryDiscovery','findStreamFactory']
+
+    Psr\Http\Message\UploadedFileFactoryInterface:
+        factory: ['Http\Discovery\Psr17FactoryDiscovery','findUploadedFileFactory']
+
+    Psr\Http\Message\ResponseFactoryInterface:
+        factory: ['Http\Discovery\Psr17FactoryDiscovery','findResponseFactory']
